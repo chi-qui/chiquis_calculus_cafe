@@ -8,17 +8,33 @@ public class Main {
         JLabel title = new JLabel();
         JLabel credits = new JLabel();
         JLabel funfact = new JLabel();
+        JButton begin = new JButton();
+        JButton exit = new JButton();
+
+        // Begin button
+        begin.setBounds(350,200,200,50);
+        begin.setOpaque(true);
+        begin.setBackground(Color.MAGENTA);
+        begin.setText("<html><h1>begin</h1></html>");
+        begin.setForeground(Color.white);
+
+        // Exit button
+        exit.setBounds(350,350,200,50);
+        exit.setOpaque(true);
+        exit.setBackground(Color.MAGENTA);
+        exit.setText("<html><h1>exit</h1></html>");
+        exit.setForeground(Color.white);
 
         // Title Label
-        title.setBounds(300,50, 300, 50);
+        title.setBounds(200,25, 500, 100);
         title.setOpaque(true);
         title.setBackground(Color.RED);
-        title.setText("<html><h1>Chiqui's Calculus Café</h1></html>");
+        title.setText("<html><h1 style=\"font-size:3.7em; \">Chiqui's Calculus Café</h1></html>");
         title.setHorizontalAlignment(JLabel.CENTER);
         title.setForeground(Color.white);
 
         // Credits Label
-        credits.setBounds(350,100, 200, 30);
+        credits.setBounds(350,125, 200, 30);
         credits.setOpaque(true);
         credits.setBackground(Color.BLUE);
         credits.setText("<html><h4>created by Douglas Serrano</h4></html>");
@@ -26,10 +42,10 @@ public class Main {
         credits.setForeground(Color.white);
 
         // Fun-fact Label
-        funfact.setBounds(300,450, 300, 100);
+        funfact.setBounds(300,425, 300, 100);
         funfact.setOpaque(true);
         funfact.setBackground(Color.red);
-        funfact.setText("<html><h4 align=\"center\">Fun Fact: Coffee is actually toxic to cats, as they are unable to metabolize caffeine effectively. So don't let them have any!</h4></html>");
+        funfact.setText("<html><h4 align=\"center\">Fun Fact:<br>Coffee is actually toxic to cats, as they are unable to metabolize caffeine effectively. So don't let them have any!</h4></html>");
         funfact.setHorizontalAlignment(JLabel.CENTER);
         funfact.setForeground(Color.white);
 
@@ -43,7 +59,8 @@ public class Main {
         initialPane.add(title);
         initialPane.add(credits);
         initialPane.add(funfact);
-
+        initialPane.add(begin);
+        initialPane.add(exit);
 
         // Basic Frame Settings
         frame.setTitle("Chiqui's Calculator Café");
