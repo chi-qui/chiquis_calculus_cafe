@@ -10,13 +10,23 @@ public class Main {
         JLabel funfact = new JLabel();
         JButton begin = new JButton();
         JButton exit = new JButton();
+        JButton settings = new JButton();
 
         // Begin button
-        begin.setBounds(350,200,200,50);
+        begin.setBounds(325,175,250,75);
         begin.setOpaque(true);
         begin.setBackground(Color.MAGENTA);
-        begin.setText("<html><h1>begin</h1></html>");
+        begin.setText("<html><h1 style=\"font-size:3.7em; \">begin</h1></html>");
         begin.setForeground(Color.white);
+        begin.setFocusPainted(false); // Gets rid of an ugly artifact
+
+        // Credits button
+        settings.setBounds(350,275,200,50);
+        settings.setOpaque(true);
+        settings.setBackground(Color.MAGENTA);
+        settings.setText("<html><h1>settings</h1></html>");
+        settings.setForeground(Color.white);
+        settings.setFocusPainted(false); // Gets rid of an ugly artifact
 
         // Exit button
         exit.setBounds(350,350,200,50);
@@ -24,6 +34,7 @@ public class Main {
         exit.setBackground(Color.MAGENTA);
         exit.setText("<html><h1>exit</h1></html>");
         exit.setForeground(Color.white);
+        exit.setFocusPainted(false); // Gets rid of an ugly artifact
 
         // Title Label
         title.setBounds(200,25, 500, 100);
@@ -45,6 +56,7 @@ public class Main {
         funfact.setBounds(300,425, 300, 100);
         funfact.setOpaque(true);
         funfact.setBackground(Color.red);
+        // Need to find a way to condense this BTW
         funfact.setText("<html><h4 align=\"center\">Fun Fact:<br>Coffee is actually toxic to cats, as they are unable to metabolize caffeine effectively. So don't let them have any!</h4></html>");
         funfact.setHorizontalAlignment(JLabel.CENTER);
         funfact.setForeground(Color.white);
@@ -61,6 +73,7 @@ public class Main {
         initialPane.add(funfact);
         initialPane.add(begin);
         initialPane.add(exit);
+        initialPane.add(settings);
 
         // Basic Frame Settings
         frame.setTitle("Chiqui's Calculator Café");
