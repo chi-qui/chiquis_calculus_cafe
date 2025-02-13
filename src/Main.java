@@ -5,12 +5,15 @@ public class Main {
     public static void main(String[] args){
         JFrame frame = new JFrame();
         JLayeredPane initialPane = new JLayeredPane();
+        JLayeredPane menuPane = new JLayeredPane();
         JLabel title = new JLabel();
         JLabel credits = new JLabel();
         JLabel funfact = new JLabel();
         JButton begin = new JButton();
         JButton exit = new JButton();
         JButton settings = new JButton();
+        JButton absoluteValueButton = new JButton();
+        JButton returnToInitial = new JButton();
 
         // Begin button
         begin.setBounds(325,175,250,75);
@@ -19,6 +22,12 @@ public class Main {
         begin.setText("<html><h1 style=\"font-size:3.7em; \">begin</h1></html>");
         begin.setForeground(Color.white);
         begin.setFocusPainted(false); // Gets rid of an ugly artifact
+
+        begin.addActionListener(_ -> {
+            initialPane.setVisible(false);
+            menuPane.setVisible(true);
+        });
+
 
         // Credits button
         settings.setBounds(350,275,200,50);
@@ -35,6 +44,8 @@ public class Main {
         exit.setText("<html><h1>exit</h1></html>");
         exit.setForeground(Color.white);
         exit.setFocusPainted(false); // Gets rid of an ugly artifact
+
+        exit.addActionListener(_ -> frame.dispose());
 
         // Title Label
         title.setBounds(200,25, 500, 100);
@@ -75,15 +86,45 @@ public class Main {
         initialPane.add(exit);
         initialPane.add(settings);
 
+        // Absolute Value button
+        absoluteValueButton.setBounds(50,50,250,75);
+        absoluteValueButton.setOpaque(true);
+        absoluteValueButton.setBackground(Color.BLUE);
+        absoluteValueButton.setText("<html><h1 style=\"font-size:1.5em; \">1. Absolute Value: | x |</h1></html>");
+        absoluteValueButton.setForeground(Color.white);
+        absoluteValueButton.setFocusPainted(false); // Gets rid of an ugly artifact
+
+        // Return To Initial button
+        returnToInitial.setBounds(400,500,125,50);
+        returnToInitial.setOpaque(true);
+        returnToInitial.setBackground(Color.RED);
+        returnToInitial.setText("<html><h1 style=\"font-size:1em; \">return home</h1></html>");
+        returnToInitial.setForeground(Color.white);
+        returnToInitial.setFocusPainted(false); // Gets rid of an ugly artifact
+
+        returnToInitial.addActionListener(_ -> {
+            initialPane.setVisible(true);
+            menuPane.setVisible(false);
+        });
+
+        // Menu Pane
+        menuPane.setBounds(0,0,width, height);
+        menuPane.setVisible(false);
+        // + Labels
+        menuPane.add(absoluteValueButton);
+        menuPane.add(returnToInitial);
+
         // Basic Frame Settings
-        frame.setTitle("Chiqui's Calculator Café");
+        frame.setTitle("Chiqui's Calculus Café"); // Don't know why it said calculator
         frame.setLayout(null);
         frame.setSize(width,height);
         frame.setResizable(false);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         // + Pane
+        frame.add(menuPane);
         frame.add(initialPane);
+
 
     }
 }
