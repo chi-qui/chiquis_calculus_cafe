@@ -21,7 +21,7 @@ class SelectScreenReturnButton extends JButton{
         this.setBounds(400,500,100,50);
         this.setOpaque(true);
         this.setBackground(Color.RED);
-        this.setText("<html><h1 style=\"font-size:0.9em; \">return home</h1></html>");
+        this.setText("<html><h1 style=\"font-size:1em; \">return</h1></html>");
         this.setForeground(Color.white);
         this.setFocusPainted(false); // Gets rid of an ugly artifact
 
@@ -40,10 +40,10 @@ class SelectScreenReturnButton extends JButton{
 class AbsoluteValueButton extends JButton{
     AbsoluteValueButton(){
         // Customization
-        this.setBounds(50,50,150,50);
+        this.setBounds(50,50,175,50);
         this.setOpaque(true);
         this.setBackground(Color.BLUE);
-        this.setText("<html><h1 style=\"font-size:1.2em; \">Absolute Value</h1></html>");
+        this.setText("<html><h1 style=\"font-size:1.2em; \">1. Absolute Value</h1></html>");
         this.setForeground(Color.white);
         this.setFocusPainted(false); // Gets rid of an ugly artifact
 
@@ -53,7 +53,7 @@ class AbsoluteValueButton extends JButton{
             parent.setVisible(false);
 
             ProgramFrame frame = (ProgramFrame) SwingUtilities.getWindowAncestor(this);
-            frame.getContentPane().add(new SelectScreen());
+            frame.getContentPane().add(new AbsoluteValue());
             frame.setVisible(true);
         });
     }

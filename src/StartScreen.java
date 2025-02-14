@@ -118,8 +118,9 @@ class FunFact extends JLabel{
                     .skip(randomNum)
                     .findFirst()
                     .get();
-
-            System.out.println("[FunFact] Generated Random Number: " + randomNum + "\n[FunFact] Grabbing line " + (randomNum + 1) + " from text/fun_facts.txt");
+            // Command Line Prompts
+            System.out.printf("[FunFact] Generated random number: [%d]\n", randomNum);
+            System.out.printf("[FunFact] Retrieving line [%d] from [text/fun_facts.txt]\n", (randomNum+1));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -128,7 +129,6 @@ class FunFact extends JLabel{
         this.setBounds(300, 425, 300, 100);
         this.setOpaque(true);
         this.setBackground(Color.red);
-        // Need to find a way to condense this BTW
         this.setText(randomFunFact);
         this.setHorizontalAlignment(JLabel.CENTER);
         this.setForeground(Color.white);
