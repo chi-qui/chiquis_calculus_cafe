@@ -98,9 +98,7 @@ class ExitButton extends JButton{
         this.setFocusPainted(false); // Gets rid of an ugly artifact
 
         // Action
-        this.addActionListener(_ -> {
-            System.exit(0);
-        });
+        this.addActionListener(_ -> System.exit(0));
     }
 }
 
