@@ -1,22 +1,34 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class SelectScreen extends JLayeredPane {
-    SelectScreen(){
+public class CreditsScreen extends JLayeredPane {
+    CreditsScreen(){
         // Customization
         this.setBounds(0,0,GlobalVariables.width,GlobalVariables.height);
 
-        // + Elements to SelectScreen Pane
-        this.add(new AbsoluteValueButton());
-        this.add(new SelectScreenReturnButton());
+        // + Elements to CreditsScreen Pane
+        this.add(new Info());
+        this.add(new CreditsReturnButton());
 
-        // Make SelectScreen Pane Visible
+        // Make CreditsScreen Pane Visible
         this.setVisible(true);
     }
 }
 
-class SelectScreenReturnButton extends JButton{
-    SelectScreenReturnButton(){
+class Info extends JLabel {
+    Info(){
+        // Customization
+        this.setBounds(300,200, 300, 100);
+        this.setOpaque(true);
+        this.setBackground(Color.pink);
+        this.setText("<html><h4 align=\"center\" style=\"font-size:3em; \">Nothing here yet lol</h4></html>");
+        this.setHorizontalAlignment(JLabel.CENTER);
+        this.setForeground(Color.white);
+    }
+}
+
+class CreditsReturnButton extends JButton{
+    CreditsReturnButton(){
         // Customization
         this.setBounds(400,500,100,50);
         this.setOpaque(true);
@@ -34,17 +46,5 @@ class SelectScreenReturnButton extends JButton{
             frame.getContentPane().add(new StartScreen());
             frame.setVisible(true);
         });
-    }
-}
-
-class AbsoluteValueButton extends JButton{
-    AbsoluteValueButton(){
-        // Customization
-        this.setBounds(50,50,150,75);
-        this.setOpaque(true);
-        this.setBackground(Color.BLUE);
-        this.setText("<html><h1 style=\"font-size:1.5em; \">Absolute Value: | x |</h1></html>");
-        this.setForeground(Color.white);
-        this.setFocusPainted(false); // Gets rid of an ugly artifact
     }
 }

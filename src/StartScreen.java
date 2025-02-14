@@ -25,7 +25,7 @@ class Title extends JLabel{
         this.setBounds(200,25, 500, 100);
         this.setOpaque(true);
         this.setBackground(Color.RED);
-        this.setText("<html><h1 style=\"font-size:3.7em; \">Chiqui's Calculus Café</h1></html>");
+        this.setText("<html><h1 style=\"font-size:3.5em; \">Chiqui's Calculus Café</h1></html>");
         this.setHorizontalAlignment(JLabel.CENTER);
         this.setForeground(Color.white);
     }
@@ -79,6 +79,10 @@ class CreditsButton extends JButton{
         this.addActionListener(_ -> {
             Container parent = this.getParent();
             parent.setVisible(false);
+
+            ProgramFrame frame = (ProgramFrame) SwingUtilities.getWindowAncestor(this);
+            frame.getContentPane().add(new CreditsScreen());
+            frame.setVisible(true);
         });
     }
 }
