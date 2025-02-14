@@ -114,12 +114,12 @@ class FunFact extends JLabel{
         String randomFunFact;
         try {
             int randomNum = ThreadLocalRandom.current().nextInt(min, max + 1);
-            randomFunFact = Files.lines(Paths.get("text/FunFacts.txt"))
+            randomFunFact = Files.lines(Paths.get("text/fun_facts.txt"))
                     .skip(randomNum)
                     .findFirst()
                     .get();
 
-            System.out.println(randomFunFact);
+            System.out.println("[FunFact] Generated Random Number: " + randomNum + "\n[FunFact] Grabbing line " + (randomNum + 1) + " from text/fun_facts.txt");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

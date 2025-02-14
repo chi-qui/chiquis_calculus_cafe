@@ -40,11 +40,21 @@ class SelectScreenReturnButton extends JButton{
 class AbsoluteValueButton extends JButton{
     AbsoluteValueButton(){
         // Customization
-        this.setBounds(50,50,150,75);
+        this.setBounds(50,50,150,50);
         this.setOpaque(true);
         this.setBackground(Color.BLUE);
-        this.setText("<html><h1 style=\"font-size:1.5em; \">Absolute Value: | x |</h1></html>");
+        this.setText("<html><h1 style=\"font-size:1.2em; \">Absolute Value</h1></html>");
         this.setForeground(Color.white);
         this.setFocusPainted(false); // Gets rid of an ugly artifact
+
+        // Action
+        this.addActionListener(_ -> {
+            Container parent = this.getParent();
+            parent.setVisible(false);
+
+            ProgramFrame frame = (ProgramFrame) SwingUtilities.getWindowAncestor(this);
+            frame.getContentPane().add(new SelectScreen());
+            frame.setVisible(true);
+        });
     }
 }
