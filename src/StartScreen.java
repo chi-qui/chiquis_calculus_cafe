@@ -1,5 +1,10 @@
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class StartScreen extends JLayeredPane {
     StartScreen(){
@@ -103,13 +108,29 @@ class ExitButton extends JButton{
 }
 
 class FunFact extends JLabel{
-    FunFact(){
+    FunFact() {
+        // Just know this randomly picks a line in my text file
+        int min = 0;
+        int max = 3;
+        String randomFunFact;
+        try {
+            int randomNum = ThreadLocalRandom.current().nextInt(min, max + 1);
+            randomFunFact = Files.lines(Paths.get("text/FunFacts.txt"))
+                    .skip(randomNum)
+                    .findFirst()
+                    .get();
+
+            System.out.println(randomFunFact);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
         // Customization
-        this.setBounds(300,425, 300, 100);
+        this.setBounds(300, 425, 300, 100);
         this.setOpaque(true);
         this.setBackground(Color.red);
         // Need to find a way to condense this BTW
-        this.setText("<html><h4 align=\"center\">Fun Fact:<br>Coffee is actually toxic to cats, as they are unable to metabolize caffeine effectively. So don't let them have any!</h4></html>");
+        this.setText(randomFunFact);
         this.setHorizontalAlignment(JLabel.CENTER);
         this.setForeground(Color.white);
     }
