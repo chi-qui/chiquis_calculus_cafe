@@ -52,8 +52,7 @@ class AVLesson extends JLabel{
                     .findFirst()
                     .get();
 
-            System.out.printf("[AVLesson] On pageNum [%d]\n", GlobalVariables.pageNum);
-            System.out.printf("[AVLesson] Retrieving line [%d] from [text/av_lesson.txt]\n", (GlobalVariables.pageNum + 1));
+            System.out.printf("[AVLesson] On pageNum [%d], line [%d] from [text/av_lesson.txt]\n", GlobalVariables.pageNum, (GlobalVariables.pageNum + 1));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -80,7 +79,7 @@ class AVNextButton extends JButton{
 
         // Action
         this.addActionListener(_ -> {
-            if (GlobalVariables.pageNum == 2){
+            if (GlobalVariables.pageNum == 3){
                 System.out.println("[AVNextButton] Reached Limit");
             }
             else {
