@@ -3,7 +3,6 @@ import java.awt.*;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class AbsoluteValue extends JLayeredPane {
     AbsoluteValue(){
@@ -78,6 +77,14 @@ class AVNextButton extends JButton{
         this.setText("<html><h1 style=\"font-size:1em; \">next</h1></html>");
         this.setForeground(Color.white);
         this.setFocusPainted(false); // Gets rid of an ugly artifact
+
+        // Action
+        this.addActionListener(_ -> {
+            GlobalVariables.pageNum ++;
+            Container parent = this.getParent();
+            parent.add(new AVLesson());
+            parent.add(new AVPageLabel());
+        });
     }
 }
 
@@ -90,6 +97,14 @@ class AVBeforeButton extends JButton{
         this.setText("<html><h1 style=\"font-size:1em; \">before</h1></html>");
         this.setForeground(Color.white);
         this.setFocusPainted(false); // Gets rid of an ugly artifact
+
+        // Action
+        this.addActionListener(_ -> {
+            GlobalVariables.pageNum --;
+            Container parent = this.getParent();
+            parent.add(new AVLesson());
+            parent.add(new AVPageLabel());
+        });
     }
 }
 
