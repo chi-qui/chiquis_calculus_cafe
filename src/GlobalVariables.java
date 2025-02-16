@@ -4,4 +4,5 @@ public class GlobalVariables {
     public static int pageNum = 0;
     public static String lesson;
     public static boolean practice = false;
+    public static int count;
 }

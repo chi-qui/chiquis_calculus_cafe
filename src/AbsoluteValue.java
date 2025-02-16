@@ -3,6 +3,8 @@ import java.awt.*;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class AbsoluteValue extends JLayeredPane {
     AbsoluteValue(){
@@ -24,7 +26,8 @@ public class AbsoluteValue extends JLayeredPane {
         }
         else {
             // + Elements to AbsoluteValue Pane (when in practice)
-            this.add(new AVTimer());
+            this.add(new AVTimerTimer(this));
+            this.add(new AVTimerLabel());
             this.add(new AVQuestion());
             this.add(new AVQuitButton());
         }
@@ -168,17 +171,43 @@ class AVPageLabel extends JLabel{
     }
 }
 
-class AVTimer extends JLabel{
-    AVTimer(){
+class AVTimerTimer extends JLabel{
+    AVTimerTimer(Container parent){
+        Timer timer = new Timer();
+        TimerTask task = new TimerTask() {
+            int count = 10 + 1; // + 1 is because GlobalVariable.count starts at 0
+            @Override
+            public void run() {
+                GlobalVariables.count = count;
+                System.out.println("[AVTimer] " + count + ", set GlobalVariable.count = " + GlobalVariables.count);
+                count--;
+                if(count < 0){
+                    System.out.println("[AVTimer] finished");
+                    timer.cancel();
+                }
+                parent.add(new AVTimerLabel());
+            }
+        };
+        timer.scheduleAtFixedRate(task, 0,1000);
+    }
+}
+
+class AVTimerLabel extends JLabel{
+    AVTimerLabel(){
         // Customization
         this.setBounds(400,0,100,25);
         this.setOpaque(true);
         this.setBackground(Color.ORANGE);
-        this.setText("Timer");
+        if(GlobalVariables.count == 0){
+            this.setText("...");
+        }else{
+            this.setText("Timer: " + GlobalVariables.count);
+        }
         this.setHorizontalAlignment(JLabel.CENTER);
         this.setForeground(Color.white);
     }
 }
+
 
 class AVQuestion extends JLabel{
     AVQuestion(){
@@ -204,6 +233,7 @@ class AVQuitButton extends JButton{
 
         // Action
         this.addActionListener(_ -> {
+            System.out.println("[AVQuitButton] Quit practice");
             GlobalVariables.practice = false;
             Container parent = this.getParent();
             parent.setVisible(false);
