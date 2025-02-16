@@ -8,11 +8,12 @@ public class AbsoluteValue extends JLayeredPane {
     AbsoluteValue(){
         // Customization
         this.setBounds(0, 0, GlobalVariables.width, GlobalVariables.height);
-        // Reset PageNum whenever entering this pane
-        GlobalVariables.pageNum = 0;
-        System.out.printf("[AbsoluteValue] resetting pageNum on entry to [%d]\n", GlobalVariables.pageNum);
 
         if (!GlobalVariables.practice) {
+            // Reset PageNum whenever entering this pane
+            GlobalVariables.pageNum = 0;
+            System.out.printf("[AbsoluteValue] resetting pageNum on entry to [%d]\n", GlobalVariables.pageNum);
+
             // + Elements to AbsoluteValue Pane
             this.add(new AVReturnButton());
             this.add(new AVLesson());
@@ -22,6 +23,7 @@ public class AbsoluteValue extends JLayeredPane {
             this.add(new AVPracticeButton());
         }
         else {
+            // + Elements to AbsoluteValue Pane (when in practice)
 
         }
     }

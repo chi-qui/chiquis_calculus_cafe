@@ -110,7 +110,7 @@ class FunFact extends JLabel{
     FunFact() {
         // Just know this randomly picks a line in my text file
         int min = 0;
-        int max = 3;
+        int max = 6;
         String randomFunFact;
         try {
             int randomNum = ThreadLocalRandom.current().nextInt(min, max + 1);

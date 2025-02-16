@@ -2,3 +2,6 @@
 <html><h4 align="center">Fun Fact:<br>Most cats are lactose intolerant, which I find kind of funny.</h4></html>
 <html><h4 align="center">Fun Fact:<br><i>Chiqui</i> is the name of my cat! Pronounced <i>cheeky</i>, it's a fragmented piece of the spanish word <i>chiquita</i>.</h4></html>
 <html><h4 align="center">Fun Fact:<br>Turkish Van cats have been shown to have an unusual affinity for swimming.</h4></html>
+<html><h4 align="center">Fun Fact:<br>Cats can <i>"taste air"</i>, which is news to me. </h4></html>
+<html><h4 align="center">Fun Fact:<br>Cats have a bunch of spiky barbs on their tongues which look sort of creepy close up.</h4></html>
+<html><h4 align="center">Fun Fact:<br>The little beans on a cats paw are known as <i>digital pads</i>. While the palm piece for lack of a better term is known as the <i>Metacarpal Pad.</i></h4></html>
