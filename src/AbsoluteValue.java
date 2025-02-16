@@ -38,7 +38,7 @@ class AVReturnButton extends JButton{
             parent.setVisible(false);
 
             ProgramFrame frame = (ProgramFrame) SwingUtilities.getWindowAncestor(this);
-            frame.getContentPane().add(new StartScreen());
+            frame.getContentPane().add(new SelectScreen());
             frame.setVisible(true);
         });
     }
@@ -80,10 +80,15 @@ class AVNextButton extends JButton{
 
         // Action
         this.addActionListener(_ -> {
-            GlobalVariables.pageNum ++;
-            Container parent = this.getParent();
-            parent.add(new AVLesson());
-            parent.add(new AVPageLabel());
+            if (GlobalVariables.pageNum == 2){
+                System.out.println("[AVNextButton] Reached Limit");
+            }
+            else {
+                GlobalVariables.pageNum++;
+                Container parent = this.getParent();
+                parent.add(new AVLesson());
+                parent.add(new AVPageLabel());
+            }
         });
     }
 }
@@ -100,10 +105,15 @@ class AVBeforeButton extends JButton{
 
         // Action
         this.addActionListener(_ -> {
-            GlobalVariables.pageNum --;
-            Container parent = this.getParent();
-            parent.add(new AVLesson());
-            parent.add(new AVPageLabel());
+            if (GlobalVariables.pageNum == 0){
+                System.out.println("[AVBeforeButton] Reached Limit");
+            }
+            else {
+                GlobalVariables.pageNum--;
+                Container parent = this.getParent();
+                parent.add(new AVLesson());
+                parent.add(new AVPageLabel());
+            }
         });
     }
 }

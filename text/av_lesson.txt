@@ -1,7 +1,5 @@
-<html><p>page1</p></html>
-<html><p>page2</p></html>
-<html><p>page3</p></html>
-<html><p>page4</p></html>
-<html><p>page5</p></html>
-<html><p>page6</p></html>
-<html><p>page7</p></html>
+<html><p style = "font-size:2em;" align = "center">There is a common misunderstanding about absolute values. For example, let's say we have | -x |. Most would jump to say that | -x | = x. This is inherently incorrect. Why is this so? Well let x = -5, and let's use the proposed formula | -x | = x.<br>| -(-5) | = | 5 | = 5 ≠ -5. Hence, the proposed formula | -x | = x is incorrect.</p></html>
+<html><p style = "font-size:2em;" align = "center">So what is the correct formula? Well we have to consider three possibilities. If x is greater than 0, positive. If x is less than 0, negative. If x is equal to 0.<br>x > 0, positive<br>x &lt; 0, negative<br>x = 0, zero</p></html>
+<html><p style = "font-size:2em;" align = "center"></p></html>
+<html><p style = "font-size:2em;" align = "center"></p></html>
+<html><p style = "font-size:2em;" align = "center"></p></html>
