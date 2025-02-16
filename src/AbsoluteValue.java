@@ -10,6 +10,10 @@ public class AbsoluteValue extends JLayeredPane {
     AbsoluteValue(){
         // Customization
         this.setBounds(0, 0, GlobalVariables.width, GlobalVariables.height);
+        // Reset count to 0 when entering
+        GlobalVariables.count = 0;
+        System.out.printf("[AbsoluteValue] resetting count on entry to [%d]\n", GlobalVariables.count);
+
 
         if (!GlobalVariables.practice) {
             // Reset PageNum whenever entering this pane
@@ -178,6 +182,9 @@ class AVTimerTimer extends JLabel{
             int count = 10 + 1; // + 1 is because GlobalVariable.count starts at 0
             @Override
             public void run() {
+                if(!GlobalVariables.practice){
+                    timer.cancel();
+                }
                 GlobalVariables.count = count;
                 System.out.println("[AVTimer] " + count + ", set GlobalVariable.count = " + GlobalVariables.count);
                 count--;
