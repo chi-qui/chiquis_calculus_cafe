@@ -24,7 +24,9 @@ public class AbsoluteValue extends JLayeredPane {
         }
         else {
             // + Elements to AbsoluteValue Pane (when in practice)
-
+            this.add(new AVTimer());
+            this.add(new AVQuestion());
+            this.add(new AVQuitButton());
         }
     }
 }
@@ -95,6 +97,12 @@ class AVLesson extends JLabel{
         this.setText(GlobalVariables.lesson);
         this.setHorizontalAlignment(JLabel.CENTER);
         this.setForeground(Color.white);
+        if (GlobalVariables.pageNum == 3){
+            ImageIcon image = new ImageIcon("images/absolute_value_formula_concept.png");
+            JLabel imageLabel = new JLabel(image);
+            imageLabel.setBounds(200,100,image.getIconWidth(),image.getIconHeight());
+            this.add(imageLabel);
+        }
     }
 }
 
@@ -157,5 +165,52 @@ class AVPageLabel extends JLabel{
         this.setText("page " + GlobalVariables.pageNum + "-3");
         this.setHorizontalAlignment(JLabel.CENTER);
         this.setForeground(Color.white);
+    }
+}
+
+class AVTimer extends JLabel{
+    AVTimer(){
+        // Customization
+        this.setBounds(400,0,100,25);
+        this.setOpaque(true);
+        this.setBackground(Color.ORANGE);
+        this.setText("Timer");
+        this.setHorizontalAlignment(JLabel.CENTER);
+        this.setForeground(Color.white);
+    }
+}
+
+class AVQuestion extends JLabel{
+    AVQuestion(){
+        // Customization
+        this.setBounds(100, 50, 700, 300);
+        this.setOpaque(true);
+        this.setBackground(Color.ORANGE);
+        this.setText("Question");
+        this.setHorizontalAlignment(JLabel.CENTER);
+        this.setForeground(Color.white);
+    }
+}
+
+class AVQuitButton extends JButton{
+    AVQuitButton(){
+        // Customization
+        this.setBounds(400,500,100,50);
+        this.setOpaque(true);
+        this.setBackground(Color.RED);
+        this.setText("<html><h1 style=\"font-size:1em; \">Quit</h1></html>");
+        this.setForeground(Color.white);
+        this.setFocusPainted(false); // Gets rid of an ugly artifact
+
+        // Action
+        this.addActionListener(_ -> {
+            GlobalVariables.practice = false;
+            Container parent = this.getParent();
+            parent.setVisible(false);
+
+            ProgramFrame frame = (ProgramFrame) SwingUtilities.getWindowAncestor(this);
+            frame.getContentPane().add(new AbsoluteValue());
+            frame.setVisible(true);
+        });
     }
 }
