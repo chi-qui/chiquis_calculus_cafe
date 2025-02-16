@@ -6,19 +6,48 @@ import java.nio.file.Paths;
 
 public class AbsoluteValue extends JLayeredPane {
     AbsoluteValue(){
+        // Customization
+        this.setBounds(0, 0, GlobalVariables.width, GlobalVariables.height);
         // Reset PageNum whenever entering this pane
         GlobalVariables.pageNum = 0;
         System.out.printf("[AbsoluteValue] resetting pageNum on entry to [%d]\n", GlobalVariables.pageNum);
 
-        // Customization
-        this.setBounds(0,0,GlobalVariables.width,GlobalVariables.height);
+        if (!GlobalVariables.practice) {
+            // + Elements to AbsoluteValue Pane
+            this.add(new AVReturnButton());
+            this.add(new AVLesson());
+            this.add(new AVNextButton());
+            this.add(new AVBeforeButton());
+            this.add(new AVPageLabel());
+            this.add(new AVPracticeButton());
+        }
+        else {
 
-        // + Elements to AbsoluteValue Pane
-        this.add(new AVReturnButton());
-        this.add(new AVLesson());
-        this.add(new AVNextButton());
-        this.add(new AVBeforeButton());
-        this.add(new AVPageLabel());
+        }
+    }
+}
+
+class AVPracticeButton extends JButton{
+    AVPracticeButton(){
+        // Customization
+        this.setBounds(400,350,100,25);
+        this.setOpaque(true);
+        this.setBackground(Color.RED);
+        this.setText("<html><h1 style=\"font-size:1em; \">practice</h1></html>");
+        this.setForeground(Color.white);
+        this.setFocusPainted(false); // Gets rid of an ugly artifact
+
+        // Action
+        this.addActionListener(_ -> {
+            GlobalVariables.practice = true;
+
+            Container parent = this.getParent();
+            parent.setVisible(false);
+
+            ProgramFrame frame = (ProgramFrame) SwingUtilities.getWindowAncestor(this);
+            frame.getContentPane().add(new AbsoluteValue());
+            frame.setVisible(true);
+        });
     }
 }
 
@@ -123,7 +152,7 @@ class AVPageLabel extends JLabel{
         this.setBounds(300,350,100,25);
         this.setOpaque(true);
         this.setBackground(Color.RED);
-        this.setText("page-" + GlobalVariables.pageNum);
+        this.setText("page " + GlobalVariables.pageNum + "-3");
         this.setHorizontalAlignment(JLabel.CENTER);
         this.setForeground(Color.white);
     }

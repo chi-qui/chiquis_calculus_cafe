@@ -3,4 +3,5 @@ public class GlobalVariables {
     public static int height = 600;
     public static int pageNum = 0;
     public static String lesson;
+    public static boolean practice = false;
 }
