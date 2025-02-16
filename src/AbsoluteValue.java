@@ -5,6 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class AbsoluteValue extends JLayeredPane {
     AbsoluteValue(){
@@ -218,11 +219,14 @@ class AVTimerLabel extends JLabel{
 
 class AVQuestion extends JLabel{
     AVQuestion(){
+        int randomNum = ThreadLocalRandom.current().nextInt(-100, 100 + 1);
+        System.out.println("[AVQuestion] Generated value: " + randomNum);
+
         // Customization
         this.setBounds(100, 50, 700, 300);
         this.setOpaque(true);
         this.setBackground(Color.ORANGE);
-        this.setText("Question");
+        this.setText("<html><p style = \"font-size:8em;\">| " + randomNum + " |</p></html>");
         this.setHorizontalAlignment(JLabel.CENTER);
         this.setForeground(Color.white);
     }
