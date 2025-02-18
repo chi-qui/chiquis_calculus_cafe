@@ -35,6 +35,8 @@ public class AbsoluteValue extends JLayeredPane {
             this.add(new AVTimerLabel());
             this.add(new AVQuestion());
             this.add(new AVQuitButton());
+            this.add(new AVTextBox());
+            this.add(new AVEnterButton());
         }
     }
 }
@@ -219,14 +221,14 @@ class AVTimerLabel extends JLabel{
 
 class AVQuestion extends JLabel{
     AVQuestion(){
-        int randomNum = ThreadLocalRandom.current().nextInt(-100, 100 + 1);
-        System.out.println("[AVQuestion] Generated value: " + randomNum);
+        GlobalVariables.currentQuestion = ThreadLocalRandom.current().nextInt(-100, 100 + 1);
+        System.out.println("[AVQuestion] Generated value: " + GlobalVariables.currentQuestion);
 
         // Customization
         this.setBounds(100, 50, 700, 300);
         this.setOpaque(true);
         this.setBackground(Color.ORANGE);
-        this.setText("<html><p style = \"font-size:8em;\">| " + randomNum + " |</p></html>");
+        this.setText("<html><p style = \"font-size:8em;\">| " + GlobalVariables.currentQuestion + " |</p></html>");
         this.setHorizontalAlignment(JLabel.CENTER);
         this.setForeground(Color.white);
     }
@@ -235,7 +237,7 @@ class AVQuestion extends JLabel{
 class AVQuitButton extends JButton{
     AVQuitButton(){
         // Customization
-        this.setBounds(400,500,100,50);
+        this.setBounds(700,350,100,25);
         this.setOpaque(true);
         this.setBackground(Color.RED);
         this.setText("<html><h1 style=\"font-size:1em; \">Quit</h1></html>");
@@ -253,5 +255,27 @@ class AVQuitButton extends JButton{
             frame.getContentPane().add(new AbsoluteValue());
             frame.setVisible(true);
         });
+    }
+}
+
+class AVTextBox extends JTextField{
+    AVTextBox (){
+        // Customization
+        this.setBounds(400,350,100,25);
+        this.setOpaque(true);
+        this.setBackground(Color.PINK);
+        this.setForeground(Color.BLACK);
+    }
+}
+
+class AVEnterButton extends JButton{
+    AVEnterButton(){
+        // Customization
+        this.setBounds(400,375,100,25);
+        this.setOpaque(true);
+        this.setBackground(Color.RED);
+        this.setText("<html><h1 style=\"font-size:1em; \">enter</h1></html>");
+        this.setForeground(Color.white);
+        this.setFocusPainted(false); // Gets rid of an ugly artifact
     }
 }
