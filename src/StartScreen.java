@@ -9,6 +9,8 @@ public class StartScreen extends JLayeredPane {
     StartScreen(){
         // Customization
         this.setBounds(0,0,GlobalVariables.width,GlobalVariables.height);
+        this.setOpaque(true);
+        this.setBackground(Color.gray);
 
         // + Elements to StartScreen Pane
         this.add(new StScTitle());
@@ -17,6 +19,7 @@ public class StartScreen extends JLayeredPane {
         this.add(new StScCreditsButton());
         this.add(new StScExitButton());
         this.add(new StScFunFact());
+        this.add(new StScChiqui());
 
         // Make StartScreen Pane Visible
         this.setVisible(true);
@@ -132,5 +135,19 @@ class StScFunFact extends JLabel{
         this.setText(randomFunFact);
         this.setHorizontalAlignment(JLabel.CENTER);
         this.setForeground(Color.white);
+    }
+}
+
+class StScChiqui extends JLabel{
+    StScChiqui(){
+        // Stole this from stack overflow
+        ImageIcon imageIcon = new ImageIcon("images/chiqui.png"); // load the image to a imageIcon
+        Image image = imageIcon.getImage(); // transform it
+        Image newimg = image.getScaledInstance(300, 300,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+        imageIcon = new ImageIcon(newimg);  // transform it back
+
+        // Customization
+        this.setIcon(imageIcon);
+        this.setBounds(0, 265, 300, 300);
     }
 }
