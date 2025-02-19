@@ -6,5 +6,4 @@ public class GlobalVariables {
     public static boolean practice = false;
     public static int count;
     public static int currentQuestion;
-    public static boolean QuestionEnter = false;
 }

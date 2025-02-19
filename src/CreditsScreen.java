@@ -7,16 +7,16 @@ public class CreditsScreen extends JLayeredPane {
         this.setBounds(0,0,GlobalVariables.width,GlobalVariables.height);
 
         // + Elements to CreditsScreen Pane
-        this.add(new Info());
-        this.add(new CReturnButton());
+        this.add(new CSInfoLabel());
+        this.add(new CSReturnButton());
 
         // Make CreditsScreen Pane Visible
         this.setVisible(true);
     }
 }
 
-class Info extends JLabel {
-    Info(){
+class CSInfoLabel extends JLabel {
+    CSInfoLabel(){
         // Customization
         this.setBounds(300,200, 300, 100);
         this.setOpaque(true);
@@ -27,8 +27,8 @@ class Info extends JLabel {
     }
 }
 
-class CReturnButton extends JButton{
-    CReturnButton(){
+class CSReturnButton extends JButton{
+    CSReturnButton(){
         // Customization
         this.setBounds(400,500,100,50);
         this.setOpaque(true);

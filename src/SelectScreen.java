@@ -7,16 +7,16 @@ public class SelectScreen extends JLayeredPane {
         this.setBounds(0,0,GlobalVariables.width,GlobalVariables.height);
 
         // + Elements to SelectScreen Pane
-        this.add(new AbsoluteValueButton());
-        this.add(new SelectScreenReturnButton());
+        this.add(new SSAbsoluteValueButton());
+        this.add(new SSReturnButton());
 
         // Make SelectScreen Pane Visible
         this.setVisible(true);
     }
 }
 
-class SelectScreenReturnButton extends JButton{
-    SelectScreenReturnButton(){
+class SSReturnButton extends JButton{
+    SSReturnButton(){
         // Customization
         this.setBounds(400,500,100,50);
         this.setOpaque(true);
@@ -37,8 +37,8 @@ class SelectScreenReturnButton extends JButton{
     }
 }
 
-class AbsoluteValueButton extends JButton{
-    AbsoluteValueButton(){
+class SSAbsoluteValueButton extends JButton{
+    SSAbsoluteValueButton(){
         // Customization
         this.setBounds(50,50,175,50);
         this.setOpaque(true);

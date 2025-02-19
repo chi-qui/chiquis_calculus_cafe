@@ -11,20 +11,20 @@ public class StartScreen extends JLayeredPane {
         this.setBounds(0,0,GlobalVariables.width,GlobalVariables.height);
 
         // + Elements to StartScreen Pane
-        this.add(new Title());
-        this.add(new Author());
-        this.add(new BeginButton());
-        this.add(new CreditsButton());
-        this.add(new ExitButton());
-        this.add(new FunFact());
+        this.add(new StScTitle());
+        this.add(new StScAuthor());
+        this.add(new StScBeginButton());
+        this.add(new StScCreditsButton());
+        this.add(new StScExitButton());
+        this.add(new StScFunFact());
 
         // Make StartScreen Pane Visible
         this.setVisible(true);
     }
 }
 
-class Title extends JLabel{
-    Title(){
+class StScTitle extends JLabel{
+    StScTitle(){
         // Customization
         this.setBounds(200,25, 500, 100);
         this.setOpaque(true);
@@ -35,8 +35,8 @@ class Title extends JLabel{
     }
 }
 
-class Author extends JLabel{
-    Author(){
+class StScAuthor extends JLabel{
+    StScAuthor(){
         // Customization
         this.setBounds(350,125, 200, 30);
         this.setOpaque(true);
@@ -47,8 +47,8 @@ class Author extends JLabel{
     }
 }
 
-class BeginButton extends JButton{
-    BeginButton(){
+class StScBeginButton extends JButton{
+    StScBeginButton(){
         // Customization
         this.setBounds(325,175,250,75);
         this.setOpaque(true);
@@ -69,8 +69,8 @@ class BeginButton extends JButton{
     }
 }
 
-class CreditsButton extends JButton{
-    CreditsButton(){
+class StScCreditsButton extends JButton{
+    StScCreditsButton(){
         // Customization
         this.setBounds(350,275,200,50);
         this.setOpaque(true);
@@ -91,8 +91,8 @@ class CreditsButton extends JButton{
     }
 }
 
-class ExitButton extends JButton{
-    ExitButton(){
+class StScExitButton extends JButton{
+    StScExitButton(){
         // Customization
         this.setBounds(400,350,100,50);
         this.setOpaque(true);
@@ -106,8 +106,8 @@ class ExitButton extends JButton{
     }
 }
 
-class FunFact extends JLabel{
-    FunFact() {
+class StScFunFact extends JLabel{
+    StScFunFact() {
         // Just know this randomly picks a line in my text file
         int min = 0;
         int max = 6;
