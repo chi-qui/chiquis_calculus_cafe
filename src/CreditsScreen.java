@@ -5,6 +5,8 @@ public class CreditsScreen extends JLayeredPane {
     CreditsScreen(){
         // Customization
         this.setBounds(0,0,GlobalVariables.width,GlobalVariables.height);
+        this.setOpaque(true);
+        this.setBackground(Color.gray);
 
         // + Elements to CreditsScreen Pane
         this.add(new CSInfoLabel());

@@ -11,6 +11,9 @@ public class AbsoluteValue extends JLayeredPane {
     AbsoluteValue(){
         // Customization
         this.setBounds(0, 0, GlobalVariables.width, GlobalVariables.height);
+        this.setOpaque(true);
+        this.setBackground(Color.gray);
+
         // Reset count to 0 when entering
         GlobalVariables.count = 0;
         System.out.printf("[AbsoluteValue] resetting count on entry to [%d]\n", GlobalVariables.count);
@@ -36,7 +39,7 @@ public class AbsoluteValue extends JLayeredPane {
             this.add(new AVQuestion());
             this.add(new AVQuitButton());
             this.add(new AVTextBox());
-            this.add(new AVEnterButton());
+            this.add(new AVQuestionNumber());
         }
     }
 }
@@ -259,23 +262,61 @@ class AVQuitButton extends JButton{
 }
 
 class AVTextBox extends JTextField{
+    private final static String newline = "\n";
     AVTextBox (){
         // Customization
         this.setBounds(400,350,100,25);
         this.setOpaque(true);
         this.setBackground(Color.PINK);
         this.setForeground(Color.BLACK);
+        JTextArea textArea = new JTextArea(5, 20);
+
+        this.addActionListener(_ -> {
+            // Stole this from oracles website
+            // This body grabs the users input, confirming it on the Console
+            String text = this.getText();
+            textArea.append(text + newline);
+            this.selectAll();
+            GlobalVariables.currentResponse = text;
+            System.out.println("[AVTextBox] user entered in: " + text);
+
+            // This body evaluates the current questions answer
+            int answer = Math.abs(GlobalVariables.currentQuestion);
+
+            // If response is correct add a point to correctCount
+            // Else if response incorrect add a point to incorrectCount
+            if(String.valueOf(answer).equals(text)){
+                GlobalVariables.correctCount++;
+                System.out.println("[AVTextBox] answer CORRECT, correctCount:" + GlobalVariables.correctCount);
+            }
+            else{
+                GlobalVariables.incorrectCount++;
+                System.out.println("[AVTextBox] answer INCORRECT, incorrectCount:" + GlobalVariables.incorrectCount);
+            }
+            System.out.println("Answer: " + answer);
+            System.out.println("Response: " + text);
+
+            // Get parent
+            Container parent = this.getParent();
+
+            // Update AVQuestionNumber
+            GlobalVariables.questionNum++;
+            parent.add(new AVQuestionNumber());
+
+            // Generate a new question
+            parent.add(new AVQuestion());
+        });
     }
 }
 
-class AVEnterButton extends JButton{
-    AVEnterButton(){
+class AVQuestionNumber extends JLabel{
+    AVQuestionNumber(){
         // Customization
-        this.setBounds(400,375,100,25);
+        this.setBounds(100,350,100,25);
         this.setOpaque(true);
         this.setBackground(Color.RED);
-        this.setText("<html><h1 style=\"font-size:1em; \">enter</h1></html>");
+        this.setText("Answered: " + GlobalVariables.questionNum);
+        this.setHorizontalAlignment(JLabel.CENTER);
         this.setForeground(Color.white);
-        this.setFocusPainted(false); // Gets rid of an ugly artifact
     }
 }

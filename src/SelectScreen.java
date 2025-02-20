@@ -5,6 +5,8 @@ public class SelectScreen extends JLayeredPane {
     SelectScreen(){
         // Customization
         this.setBounds(0,0,GlobalVariables.width,GlobalVariables.height);
+        this.setOpaque(true);
+        this.setBackground(Color.gray);
 
         // + Elements to SelectScreen Pane
         this.add(new SSAbsoluteValueButton());
