@@ -56,7 +56,8 @@ class AVPracticeButton extends JButton{
 
         // Action
         this.addActionListener(_ -> {
-            GlobalVariables.practice = true;
+            GlobalVariables.questionNum = 0; // Reset when starting practice
+            GlobalVariables.practice = true; // Set to true to start practice
 
             Container parent = this.getParent();
             parent.setVisible(false);
@@ -226,7 +227,7 @@ class AVQuestion extends JLabel{
     AVQuestion(){
         // Difficulty:
         // 1 = Easy ; 2 = Normal ; 3 = Intermediate ; 4 = Hard
-        int randDiff = ThreadLocalRandom.current().nextInt(1, 2 + 1);
+        int randDiff = ThreadLocalRandom.current().nextInt(1, 3 + 1);
         System.out.println("[AVQuestion] Random difficulty: " + randDiff);
         if(randDiff == 1){GlobalVariables.currentQuestion = ThreadLocalRandom.current().nextInt(-100, 100 + 1);
             GlobalVariables.currentQuestion = ThreadLocalRandom.current().nextInt(-15, 15 + 1);
@@ -235,19 +236,40 @@ class AVQuestion extends JLabel{
         } else if (randDiff == 2) {
             int random = ThreadLocalRandom.current().nextInt(1, 2 + 1);
             if(random == 1){
-                int twoNum1 = ThreadLocalRandom.current().nextInt(-25, 25 + 1);
-                int twoNum2 =ThreadLocalRandom.current().nextInt(-25, 25 + 1);
+                int twoNum1 = ThreadLocalRandom.current().nextInt(-10, 10 + 1);
+                int twoNum2 =ThreadLocalRandom.current().nextInt(-5, 5 + 1);
                 GlobalVariables.currentQuestion = twoNum1 + twoNum2;
                 GlobalVariables.currentQuestionString = twoNum1 + " + " + twoNum2;
                 System.out.println("[AVQuestion] Generated Question: |" + twoNum1 + " + " + twoNum2 + "|");
             } else if (random == 2) {
-                int twoNum1 = ThreadLocalRandom.current().nextInt(-25, 25 + 1);
-                int twoNum2 =ThreadLocalRandom.current().nextInt(-25, 25 + 1);
+                int twoNum1 = ThreadLocalRandom.current().nextInt(-10, 10 + 1);
+                int twoNum2 =ThreadLocalRandom.current().nextInt(-5, 5 + 1);
                 GlobalVariables.currentQuestion = twoNum1 - twoNum2;
                 GlobalVariables.currentQuestionString = twoNum1 + " - " + twoNum2;
                 System.out.println("[AVQuestion] Generated Question: |" + twoNum1 + " - " + twoNum2 + "|");
             }
+        } else if (randDiff == 3){
+            int random = ThreadLocalRandom.current().nextInt(1, 2 + 1);
+            if(random == 1){
+                int threeNum1 = ThreadLocalRandom.current().nextInt(-20, 20 + 1);
+                int threeNum2 =ThreadLocalRandom.current().nextInt(-10, 10 + 1);
+                int threeNum3 =ThreadLocalRandom.current().nextInt(-5, 5 + 1);
+                GlobalVariables.currentQuestion = threeNum1 - threeNum2 * threeNum3;
+                GlobalVariables.currentQuestionString = threeNum1 + " - " + threeNum2 + " ( " + threeNum3 + " )";
+                System.out.println("[AVQuestion] Generated Question: |" + threeNum1 + " - " + threeNum2 + " ( " + threeNum3 + " )" + "|");
+            } else if (random == 2) {
+                int threeNum1 = ThreadLocalRandom.current().nextInt(-5, 5 + 1);
+                int threeNum2 =ThreadLocalRandom.current().nextInt(-10, 10 + 1);
+                int threeNum3 =ThreadLocalRandom.current().nextInt(-20, 20 + 1);
+                GlobalVariables.currentQuestion = threeNum1 * threeNum2 + threeNum3;
+                GlobalVariables.currentQuestionString = " ( " + threeNum1 + " ) " + threeNum2 + " + " + threeNum3;
+                System.out.println("[AVQuestion] Generated Question: |" + " ( " + threeNum1 + " ) " + threeNum2 + " + " + threeNum3 + "|");
+            }
         }
+
+
+
+
         int answer = Math.abs(GlobalVariables.currentQuestion);
         System.out.println("[AVQuestion] Answer: " + answer);
 
@@ -312,11 +334,11 @@ class AVTextBox extends JTextField{
             // Else if response incorrect add a point to incorrectCount
             if(String.valueOf(answer).equals(text)){
                 GlobalVariables.correctCount++;
-                System.out.println("[AVTextBox] answer CORRECT, correctCount:" + GlobalVariables.correctCount);
+                System.out.println("[AVTextBox] answer " + GlobalVariables.ANSI_GREEN + "CORRECT" + GlobalVariables.ANSI_RESET + ", correctCount: " + GlobalVariables.ANSI_GREEN + GlobalVariables.correctCount + GlobalVariables.ANSI_RESET);
             }
             else{
                 GlobalVariables.incorrectCount++;
-                System.out.println("[AVTextBox] answer INCORRECT, incorrectCount:" + GlobalVariables.incorrectCount);
+                System.out.println("[AVTextBox] answer " + GlobalVariables.ANSI_RED + "INCORRECT" + GlobalVariables.ANSI_RESET + ", incorrectCount: " + GlobalVariables.ANSI_RED + GlobalVariables.incorrectCount + GlobalVariables.ANSI_RESET);
             }
 
             // Get parent
