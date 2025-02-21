@@ -12,7 +12,7 @@ public class AbsoluteValue extends JLayeredPane {
         // Customization
         this.setBounds(0, 0, GlobalVariables.width, GlobalVariables.height);
         this.setOpaque(true);
-        this.setBackground(Color.gray);
+        this.setBackground(new Color(221, 229, 182));
 
         // Reset count to 0 when entering
         GlobalVariables.count = 0;
@@ -49,7 +49,7 @@ class AVPracticeButton extends JButton{
         // Customization
         this.setBounds(400,350,100,25);
         this.setOpaque(true);
-        this.setBackground(Color.RED);
+        this.setBackground(new Color(108, 88, 76));
         this.setText("<html><h1 style=\"font-size:1em; \">practice</h1></html>");
         this.setForeground(Color.white);
         this.setFocusPainted(false); // Gets rid of an ugly artifact
@@ -72,9 +72,9 @@ class AVPracticeButton extends JButton{
 class AVReturnButton extends JButton{
     AVReturnButton(){
         // Customization
-        this.setBounds(400,500,100,50);
+        this.setBounds(400,530,100,25);
         this.setOpaque(true);
-        this.setBackground(Color.RED);
+        this.setBackground(new Color(108, 88, 76));
         this.setText("<html><h1 style=\"font-size:1em; \">return</h1></html>");
         this.setForeground(Color.white);
         this.setFocusPainted(false); // Gets rid of an ugly artifact
@@ -107,7 +107,7 @@ class AVLesson extends JLabel{
         // Customization
         this.setBounds(100, 50, 700, 300);
         this.setOpaque(true);
-        this.setBackground(Color.pink);
+        this.setBackground(new Color(169, 132, 103));
         this.setText(GlobalVariables.lesson);
         this.setHorizontalAlignment(JLabel.CENTER);
         this.setForeground(Color.white);
@@ -125,7 +125,7 @@ class AVNextButton extends JButton{
         // Customization
         this.setBounds(200,350,100,25);
         this.setOpaque(true);
-        this.setBackground(Color.RED);
+        this.setBackground(new Color(108, 88, 76));
         this.setText("<html><h1 style=\"font-size:1em; \">next</h1></html>");
         this.setForeground(Color.white);
         this.setFocusPainted(false); // Gets rid of an ugly artifact
@@ -150,7 +150,7 @@ class AVBeforeButton extends JButton{
         // Customization
         this.setBounds(100,350,100,25);
         this.setOpaque(true);
-        this.setBackground(Color.RED);
+        this.setBackground(new Color(108, 88, 76));
         this.setText("<html><h1 style=\"font-size:1em; \">before</h1></html>");
         this.setForeground(Color.white);
         this.setFocusPainted(false); // Gets rid of an ugly artifact
@@ -175,7 +175,7 @@ class AVPageLabel extends JLabel{
         // Customization
         this.setBounds(300,350,100,25);
         this.setOpaque(true);
-        this.setBackground(Color.RED);
+        this.setBackground(new Color(108, 88, 76));
         this.setText("page " + GlobalVariables.pageNum + "-3");
         this.setHorizontalAlignment(JLabel.CENTER);
         this.setForeground(Color.white);
@@ -197,6 +197,8 @@ class AVTimerTimer extends JLabel{
                 count--;
                 if(count < 0){
                     System.out.println("[AVTimer] finished");
+                    GlobalVariables.practice = false; // Set practice to false when done
+                    GlobalVariables.practiceDone = true; // Set practice done to true when done.
                     timer.cancel();
                 }
                 parent.add(new AVTimerLabel());
@@ -211,7 +213,7 @@ class AVTimerLabel extends JLabel{
         // Customization
         this.setBounds(400,0,100,25);
         this.setOpaque(true);
-        this.setBackground(Color.ORANGE);
+        this.setBackground(new Color(108, 88, 76));
         if(GlobalVariables.count == 0){
             this.setText("...");
         }else{
@@ -276,7 +278,7 @@ class AVQuestion extends JLabel{
         // Customization
         this.setBounds(100, 50, 700, 300);
         this.setOpaque(true);
-        this.setBackground(Color.ORANGE);
+        this.setBackground(new Color(169, 132, 103));
         this.setText("<html><p style = \"font-size:8em;\">| " + GlobalVariables.currentQuestionString + " |</p></html>");
         this.setHorizontalAlignment(JLabel.CENTER);
         this.setForeground(Color.white);
@@ -288,7 +290,7 @@ class AVQuitButton extends JButton{
         // Customization
         this.setBounds(700,350,100,25);
         this.setOpaque(true);
-        this.setBackground(Color.RED);
+        this.setBackground(new Color(108, 88, 76));
         this.setText("<html><h1 style=\"font-size:1em; \">Quit</h1></html>");
         this.setForeground(Color.white);
         this.setFocusPainted(false); // Gets rid of an ugly artifact
@@ -313,8 +315,8 @@ class AVTextBox extends JTextField{
         // Customization
         this.setBounds(400,350,100,25);
         this.setOpaque(true);
-        this.setBackground(Color.PINK);
-        this.setForeground(Color.BLACK);
+        this.setBackground(new Color(108, 88, 76));
+        this.setForeground(Color.white);
         JTextArea textArea = new JTextArea(5, 20);
 
         this.addActionListener(_ -> {
@@ -359,7 +361,7 @@ class AVQuestionNumber extends JLabel{
         // Customization
         this.setBounds(100,350,100,25);
         this.setOpaque(true);
-        this.setBackground(Color.RED);
+        this.setBackground(new Color(108, 88, 76));
         this.setText("Answered: " + GlobalVariables.questionNum);
         this.setHorizontalAlignment(JLabel.CENTER);
         this.setForeground(Color.white);

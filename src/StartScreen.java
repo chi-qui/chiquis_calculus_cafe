@@ -10,7 +10,7 @@ public class StartScreen extends JLayeredPane {
         // Customization
         this.setBounds(0,0,GlobalVariables.width,GlobalVariables.height);
         this.setOpaque(true);
-        this.setBackground(Color.gray);
+        this.setBackground(new Color(221, 229, 182));
 
         // + Elements to StartScreen Pane
         this.add(new StScTitle());
@@ -31,7 +31,7 @@ class StScTitle extends JLabel{
         // Customization
         this.setBounds(200,25, 500, 100);
         this.setOpaque(true);
-        this.setBackground(Color.RED);
+        this.setBackground(new Color(169, 132, 103));
         this.setText("<html><h1 style=\"font-size:3.5em; \">Chiqui's Calculus Café</h1></html>");
         this.setHorizontalAlignment(JLabel.CENTER);
         this.setForeground(Color.white);
@@ -43,7 +43,7 @@ class StScAuthor extends JLabel{
         // Customization
         this.setBounds(350,125, 200, 30);
         this.setOpaque(true);
-        this.setBackground(Color.BLUE);
+        this.setBackground(new Color(108, 88, 76));
         this.setText("<html><h4>created by Douglas Serrano</h4></html>");
         this.setHorizontalAlignment(JLabel.CENTER);
         this.setForeground(Color.white);
@@ -55,7 +55,7 @@ class StScBeginButton extends JButton{
         // Customization
         this.setBounds(325,175,250,75);
         this.setOpaque(true);
-        this.setBackground(Color.MAGENTA);
+        this.setBackground(new Color(108, 88, 76));
         this.setText("<html><h1 style=\"font-size:3.7em; \">begin</h1></html>");
         this.setForeground(Color.white);
         this.setFocusPainted(false); // Gets rid of an ugly artifact
@@ -77,7 +77,7 @@ class StScCreditsButton extends JButton{
         // Customization
         this.setBounds(350,275,200,50);
         this.setOpaque(true);
-        this.setBackground(Color.MAGENTA);
+        this.setBackground(new Color(108, 88, 76));
         this.setText("<html><h1>credits</h1></html>");
         this.setForeground(Color.white);
         this.setFocusPainted(false); // Gets rid of an ugly artifact
@@ -99,7 +99,7 @@ class StScExitButton extends JButton{
         // Customization
         this.setBounds(400,350,100,50);
         this.setOpaque(true);
-        this.setBackground(Color.MAGENTA);
+        this.setBackground(new Color(108, 88, 76));
         this.setText("<html><h1>exit</h1></html>");
         this.setForeground(Color.white);
         this.setFocusPainted(false); // Gets rid of an ugly artifact
@@ -131,7 +131,7 @@ class StScFunFact extends JLabel{
         // Customization
         this.setBounds(300, 425, 300, 100);
         this.setOpaque(true);
-        this.setBackground(Color.red);
+        this.setBackground(new Color(169, 132, 103));
         this.setText(randomFunFact);
         this.setHorizontalAlignment(JLabel.CENTER);
         this.setForeground(Color.white);
